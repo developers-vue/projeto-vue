@@ -1,4 +1,4 @@
-# 📱 Projeto Etec leste
+# 📱 Projeto Etec Vue
 
 Projeto desenvolvido em **Kotlin** com o objetivo de criar um sistema acadêmico para cadastro e gerenciamento de alunos.
 
