@@ -77,6 +77,16 @@ export default {
       </div>
     </section>
 
+    <section class="card">
+      <h2>Minhas tarefas</h2>
+
+      <ListaTarefas
+        :tarefas="tarefas"
+        @alternar="alternarTarefa"
+        @excluir="excluirTarefa"
+      />
+    </section>
+    
   </div>
 </template>
 
