@@ -9,6 +9,7 @@ export default {
     return {
       tarefas: [],
       proximoId: 1,
+      filtro: 'todas' // FILTRO
     }
   },
 
@@ -23,6 +24,12 @@ export default {
       return this.tarefas.filter(tarefa => !tarefa.concluida).length
     },
 
+    // FILTRO
+    tarefasFiltradas() {
+      if (this.filtro === 'pendentes') return this.tarefas.filter(t => !t.concluida)
+      if (this.filtro === 'concluidas') return this.tarefas.filter(t => t.concluida)
+      return this.tarefas
+    }
   },
 
   methods: {
@@ -80,8 +87,15 @@ export default {
     <section class="card">
       <h2>Minhas tarefas</h2>
 
+      <!-- FILTRO -->
+      <select v-model="filtro" class="filtro">
+        <option value="todas">Todas</option>
+        <option value="pendentes">Pendentes</option>
+        <option value="concluidas">Concluídas</option>
+      </select>
+
       <ListaTarefas
-        :tarefas="tarefas"
+        :tarefas="tarefasFiltradas"
         @alternar="alternarTarefa"
         @excluir="excluirTarefa"
       />
@@ -179,5 +193,16 @@ body {
 .indicador span {
   font-size: 14px;
   color: #6b7190;
+}
+
+/* FILTRO */
+.filtro {
+  margin-bottom: 16px;
+  padding: 8px 12px;
+  border: 1px solid #d5d9eb;
+  border-radius: 8px;
+  background-color: #ffffff;
+  font-size: 14px;
+  color: #4f46e5;
 }
 </style>
